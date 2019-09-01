@@ -13,8 +13,8 @@ if($d_name){
 
 	echo"<script language=\"javascript\">";
 	echo"alert('บันทึกข้อมูลเรียบร้อยแล้ว');";
-	//echo"window.location ='showdept.php';";
-	echo "window.history.back();";
+	echo"window.location ='showdept.php';";
+	//echo "window.history.back();";
 	echo"</script>";
 	}
 	else{

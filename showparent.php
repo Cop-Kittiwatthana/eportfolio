@@ -25,7 +25,7 @@ mysql_close();
         <table width="1023" height="104" border="1" cellpadding="0" cellspacing="0">
           <tr>
             <td colspan="6" align="center"><div align="center">รายงานข้อมูลผู้ปกครอง</div></td>
-            <td width="121" align="center"><div align="center">[เพิมผู้ปกครอง]</div></td>
+            <td width="121" align="center"><div align="center"><?php echo "<a href=\"frm_addparent.php?pa_id=[pa_id]\">"; ?> [เพิมผู้ปกครอง]<?php echo "</a>";?></div></td>
           </tr>
           <tr>
             <td width="139" align="center">รหัสบัตรประชาชน</td>

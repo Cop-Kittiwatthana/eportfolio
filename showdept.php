@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 
-$sql = "SELECT * FROM department";
+$sql = "SELECT * FROM department order by d_id";
 $result = mysql_query($sql,$conn)
  or die("3. ไม่สามารถประมวลผลคำสั้งได้").mysql_error();
 ?>
@@ -25,7 +25,7 @@ $result = mysql_query($sql,$conn)
         <table width="872" height="104" border="1" cellpadding="0" cellspacing="0">
           <tr>
             <td colspan="4" align="center"><div align="center">รายงานข้อมูลกลุ่มสาระ</div></td>
-            <td width="116" align="center"><div align="center">[เพิมกลุ่มสาระ]</div></td>
+            <td width="116" align="center"><div align="center"><?php echo "<a href=\"frm_addept.php?d_id=[d_id]\">"; ?> [เพิมกลุ่มสาระ]<?php echo "</a>";?></div></td>
           </tr>
           <tr>
             <td width="131" align="center">รหัสกลุ่มสาระ</td>

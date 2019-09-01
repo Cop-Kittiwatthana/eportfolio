@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <td height="45" bgcolor="#FFFFFF"><div align="center">เลขประจำตัวชาชน</div></td>
-            <td height="45" bgcolor="#FFFFFF"><input name="pa_id" type="text" id="pa_id" /></td>
+            <td height="45" bgcolor="#FFFFFF"><input name="pa_id" type="text" id="pa_id" maxlength="13" /></td>
           </tr>
           <tr>
             <td height="45" bgcolor="#FFFFFF"><div align="center">ชื่อ-นามสกุล</div></td>

@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 
-$sql = "SELECT * FROM work";
+$sql = "SELECT * FROM work order by w_id";
 $result = mysql_query($sql,$conn)
  or die("3. ไม่สามารถประมวลผลคำสั้งได้").mysql_error();
 ?>
@@ -25,7 +25,7 @@ $result = mysql_query($sql,$conn)
         <table width="982" height="104" border="1" cellpadding="0" cellspacing="0">
           <tr>
             <td colspan="6" align="center"><div align="center">รายงานข้อมูลผลงาน</div></td>
-            <td width="103" align="center"><div align="center">[เพิมผลงาน]</div></td>
+            <td width="103" align="center"><div align="center"><?php echo "<a href=\"frm_addwork.php?w_id=[w_id]\">"; ?> [เพิมผลงาน]<?php echo "</a>";?></div></td>
           </tr>
           <tr>
             <td width="118" align="center">รหัสผลงาน</td>

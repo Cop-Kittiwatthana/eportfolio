@@ -30,7 +30,7 @@ $rs = mysql_fetch_array($result);
           </tr>
           <tr>
             <td width="140"><div align="center">รหัสบัตรประชาชน</div></td>
-            <td width="499"><input name="pa_id" type="text" id="pa_id" value="<?php echo "$rs[pa_id]"; ?>" />
+            <td width="499"><input name="pa_id" type="text" id="pa_id" value="<?php echo "$rs[pa_id]"; ?>" maxlength="13" />
               <input name="pa_id" type="hidden" id="pa_id" value="<?php echo "$rs[pa_id]"; ?>" /></td>
           </tr>
           <tr>

@@ -30,8 +30,8 @@ if(strlen($pa_id) == 13 && $pa_name  && $pa_occupation && $pa_tel){
 	
 	echo"<script language=\"javascript\">";
 	echo"alert('บันทึกข้อมูลเรียบร้อยแล้ว');";
-	//echo "window.location = 'showaddsition.php'";
-	echo "window.history.back();";
+	echo "window.location = 'showparent.php'";
+	//echo "window.history.back();";
 	echo"</script>";
 	
 }

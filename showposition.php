@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-$sql = "SELECT * FROM position";
+$sql = "SELECT * FROM position order by po_id";
 $result = mysql_query($sql,$conn)
  or die("3. ไม่สามารถประมวลผลคำสั้งได้").mysql_error();
 ?>
@@ -25,7 +25,7 @@ $result = mysql_query($sql,$conn)
         <table width="872" height="104" border="1" cellpadding="0" cellspacing="0">
           <tr>
             <td colspan="4" align="center"><div align="center">รายงานข้อมูลตำแหน่ง</div></td>
-            <td width="116" align="center"><div align="center">[เพิมตำแหน่ง]</div></td>
+            <td width="116" align="center"><div align="center"><?php echo "<a href=\"frm_addposition.php?po_id=[po_id]\">"; ?> [เพิมตำแหน่ง]<?php echo "</a>";?></div></td>
           </tr>
           <tr>
             <td width="131" align="center">รหัสตำแหน่ง</td>
