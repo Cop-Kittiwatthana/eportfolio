@@ -1,0 +1,392 @@
+CREATE TABLE `arrestrecord` (
+  `ar_id` tinyint(4) NOT NULL,
+  `ar_date` varchar(20) DEFAULT NULL,
+  `ar_address` varchar(100) DEFAULT NULL,
+  `ar_confes` varchar(100) DEFAULT NULL,
+  `ar_dateconfer` varchar(20) DEFAULT NULL,
+  `ps_id` tinyint(4) DEFAULT NULL,
+  `ar_time` varchar(10) DEFAULT NULL,
+  `ar_timeconfer` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `arrestrecord`
+--
+
+INSERT INTO `arrestrecord` (`ar_id`, `ar_date`, `ar_address`, `ar_confes`, `ar_dateconfer`, `ps_id`, `ar_time`, `ar_timeconfer`) VALUES
+(6, '2019-12-02', 'HHHH', 'GGGGG', '2019-12-03', 2, '11:11', '11:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arrest_police`
+--
+
+CREATE TABLE `arrest_police` (
+  `arpo_id` tinyint(10) NOT NULL,
+  `ar_id` tinyint(4) DEFAULT NULL,
+  `p_id` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `arrest_police`
+--
+
+INSERT INTO `arrest_police` (`arpo_id`, `ar_id`, `p_id`) VALUES
+(2, 6, 6),
+(3, 6, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arrest_punis`
+--
+
+CREATE TABLE `arrest_punis` (
+  `arp_id` tinyint(10) NOT NULL,
+  `ar_id` tinyint(4) DEFAULT NULL,
+  `pu_id` varchar(13) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `arrest_punis`
+--
+
+INSERT INTO `arrest_punis` (`arp_id`, `ar_id`, `pu_id`) VALUES
+(12, 6, '4'),
+(11, 6, '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arrest_suspect`
+--
+
+CREATE TABLE `arrest_suspect` (
+  `ars_id` tinyint(10) NOT NULL,
+  `ars_date` varchar(20) DEFAULT NULL,
+  `ar_id` tinyint(4) DEFAULT NULL,
+  `s_id` varchar(13) DEFAULT NULL,
+  `ars_time` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `arrest_suspect`
+--
+
+INSERT INTO `arrest_suspect` (`ars_id`, `ars_date`, `ar_id`, `s_id`, `ars_time`) VALUES
+(6, '2019-12-02', 6, '1234567899998', '13:50'),
+(7, '2019-12-02', 6, '5555555555555', '13:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `arrest_withess`
+--
+
+CREATE TABLE `arrest_withess` (
+  `arw_id` tinyint(10) NOT NULL,
+  `ar_id` tinyint(4) DEFAULT NULL,
+  `w_id` varchar(13) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `arrest_withess`
+--
+
+INSERT INTO `arrest_withess` (`arw_id`, `ar_id`, `w_id`) VALUES
+(6, 6, '1234569999555'),
+(7, 6, '8888888888888');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drugtype`
+--
+
+CREATE TABLE `drugtype` (
+  `dt_id` tinyint(4) NOT NULL,
+  `dt_name` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `drugtype`
+--
+
+INSERT INTO `drugtype` (`dt_id`, `dt_name`) VALUES
+(1, 'ประเภท 1 ยาเสพติดให้โทษชนิดร้ายแรง'),
+(2, 'ประเภท 2 ยาเสพติดให้โทษทั่วไป'),
+(3, 'ประเภท 3 ยาเสพติดให้โทษชนิดเป็นตำรับยาที่มียาเสพติดให้โทษประเภท2 ปรุงผสมอยู่'),
+(4, 'ประเภท 4 สารเคมีที่ใช้ในการผลิตยาเสพติดให้โทษประเภท1 หรือ ประเภท2'),
+(5, 'ประเภท 5 ยาเสพติดให้โทษที่มิได้เข้าข่ายอยู่ในประเภท1 ถึงประเภท4 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `police`
+--
+
+CREATE TABLE `police` (
+  `p_id` tinyint(4) NOT NULL,
+  `p_name` varchar(50) DEFAULT NULL,
+  `p_address` varchar(100) DEFAULT NULL,
+  `p_tel` varchar(15) DEFAULT NULL,
+  `p_pic` varchar(100) DEFAULT NULL,
+  `p_username` varchar(30) DEFAULT NULL,
+  `p_password` varchar(30) DEFAULT NULL,
+  `ps_id` tinyint(4) DEFAULT NULL,
+  `po_id` tinyint(4) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `police`
+--
+
+INSERT INTO `police` (`p_id`, `p_name`, `p_address`, `p_tel`, `p_pic`, `p_username`, `p_password`, `ps_id`, `po_id`) VALUES
+(2, 'copp', '85dsfdsfsf', '7894561233', '5df530ae8db1ddahyun (17).jpg', 'aa', 'aa', 2, 2),
+(3, 'ss', 'sss', '23181651586', NULL, 'ss', '1234', 1, 1),
+(4, 'DD', '56sadfds', '23187156514', '5e038e3839708_dahyun (9).jpg', 'dd', '1234', 1, 1),
+(5, 'อนันตะ สัก', '56sadfds', '23187156514', '5e038e1689b7b_dahyun (18).jpg', 'dd', '1234', 3, 1),
+(6, 'กิตติวัฒนา ลาดนาจันทร์', '80/99 ฤฤ', '0873151225', '5e038d825909ddahyun (23).jpg', 'xx', 'xx', 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `position`
+--
+
+CREATE TABLE `position` (
+  `po_id` tinyint(4) NOT NULL,
+  `po_name` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `position`
+--
+
+INSERT INTO `position` (`po_id`, `po_name`) VALUES
+(1, 'สิบตำรวจตรี'),
+(2, 'สิบตำรวจโท'),
+(3, 'ร้อยตำรวจเอก'),
+(4, 'ร้อยตำรวจโท');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `punishment`
+--
+
+CREATE TABLE `punishment` (
+  `pu_id` tinyint(4) NOT NULL,
+  `pu_plaint` varchar(100) DEFAULT NULL,
+  `pu_detail` varchar(1000) DEFAULT NULL,
+  `dt_id` tinyint(4) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `punishment`
+--
+
+INSERT INTO `punishment` (`pu_id`, `pu_plaint`, `pu_detail`, `dt_id`) VALUES
+(1, 'จำหน่ายหรือมีไว้ในครอบครองเพื่อจำหน่าย', '	บทลงโทษสูงสุดคือประหารชีวิต หรือจำคุกตั้งแต่ 4 ปี - จำคุกตลอดชีวิต และ/หรือปรับตั้งแต่ 80,000 บาท ', 1),
+(2, 'ผลิต นำเข้า หรือ ส่งออก', 'บทลงโทษสูงสุดคือประหารชีวิตหรือจำคุกตั้งแต่ 4 ปี – ตลอดชีวิต หรือปรับตั้งแต่ 80,000 บาท –5,000,000บา', 1),
+(4, 'เสพยาเสพติดให้โทษในประเภท 1', 'จำคุกตั้งแต่ 6 เดือน – 3 ปี หรือปรับตั้งแต่ 10,000 บาท – 60,000 บาท หรือทั้งจำทั้งปรับ', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `station`
+--
+
+CREATE TABLE `station` (
+  `ps_id` tinyint(4) NOT NULL,
+  `ps_name` varchar(50) DEFAULT NULL,
+  `ps_address` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `station`
+--
+
+INSERT INTO `station` (`ps_id`, `ps_name`, `ps_address`) VALUES
+(1, 'สภ.หนองไผ่', '80/33 ต.หนองไผ่'),
+(2, 'สภ.วิเชียรบุรี', '80/33 ต.หนองไผ่'),
+(3, 'สภ.พุเตย', '888/8888'),
+(4, 'สภ.บึงสามพัน', '888/88888 ดดด');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suspect`
+--
+
+CREATE TABLE `suspect` (
+  `s_id` varchar(13) NOT NULL,
+  `s_name` varchar(50) DEFAULT NULL,
+  `s_address` varchar(100) DEFAULT NULL,
+  `s_tel` varchar(15) DEFAULT NULL,
+  `s_pic` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `suspect`
+--
+
+INSERT INTO `suspect` (`s_id`, `s_name`, `s_address`, `s_tel`, `s_pic`) VALUES
+('1234567899998', 'มาดี มาดู', '80/3', '0873151225', '5dedf621a4cbf_dahyun (5).jpg'),
+('9999999999999', 'ASDdddddlll', 'dsasf5sหกฟก', '123456', '5e010b1912986dahyun (14).jpg'),
+('5555555555555', 'อนุสร  ดีงาม', '888/888กกกหฟ', '855555555', '5e03b5c631b11dahyun (25).jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `witness1`
+--
+
+CREATE TABLE `witness1` (
+  `w_id` varchar(13) NOT NULL,
+  `w_name` varchar(50) DEFAULT NULL,
+  `w_address` varchar(100) DEFAULT NULL,
+  `w_tel` varchar(15) DEFAULT NULL,
+  `w_pic` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `witness1`
+--
+
+INSERT INTO `witness1` (`w_id`, `w_name`, `w_address`, `w_tel`, `w_pic`) VALUES
+('9876543212111', 'll', 'll', '564555555555555', '5df143f255bcddahyun (16).jpg'),
+('1234569999555', 'จริงใจ ไงดี', 'thrhtfh', '655', '5e010c88ccf30_dahyun (22).jpg'),
+('8888888888888', 'สนใจ งามดี', 'หฟก8888888', '888888888', '5e03b6266d672dahyun (6).jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `arrestrecord`
+--
+ALTER TABLE `arrestrecord`
+  ADD PRIMARY KEY (`ar_id`);
+
+--
+-- Indexes for table `arrest_police`
+--
+ALTER TABLE `arrest_police`
+  ADD PRIMARY KEY (`arpo_id`);
+
+--
+-- Indexes for table `arrest_punis`
+--
+ALTER TABLE `arrest_punis`
+  ADD PRIMARY KEY (`arp_id`);
+
+--
+-- Indexes for table `arrest_suspect`
+--
+ALTER TABLE `arrest_suspect`
+  ADD PRIMARY KEY (`ars_id`);
+
+--
+-- Indexes for table `arrest_withess`
+--
+ALTER TABLE `arrest_withess`
+  ADD PRIMARY KEY (`arw_id`);
+
+--
+-- Indexes for table `drugtype`
+--
+ALTER TABLE `drugtype`
+  ADD PRIMARY KEY (`dt_id`);
+
+--
+-- Indexes for table `police`
+--
+ALTER TABLE `police`
+  ADD PRIMARY KEY (`p_id`);
+
+--
+-- Indexes for table `position`
+--
+ALTER TABLE `position`
+  ADD PRIMARY KEY (`po_id`);
+
+--
+-- Indexes for table `punishment`
+--
+ALTER TABLE `punishment`
+  ADD PRIMARY KEY (`pu_id`);
+
+--
+-- Indexes for table `station`
+--
+ALTER TABLE `station`
+  ADD PRIMARY KEY (`ps_id`);
+
+--
+-- Indexes for table `suspect`
+--
+ALTER TABLE `suspect`
+  ADD PRIMARY KEY (`s_id`);
+
+--
+-- Indexes for table `witness1`
+--
+ALTER TABLE `witness1`
+  ADD PRIMARY KEY (`w_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `arrestrecord`
+--
+ALTER TABLE `arrestrecord`
+  MODIFY `ar_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `arrest_police`
+--
+ALTER TABLE `arrest_police`
+  MODIFY `arpo_id` tinyint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `arrest_punis`
+--
+ALTER TABLE `arrest_punis`
+  MODIFY `arp_id` tinyint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `arrest_suspect`
+--
+ALTER TABLE `arrest_suspect`
+  MODIFY `ars_id` tinyint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `arrest_withess`
+--
+ALTER TABLE `arrest_withess`
+  MODIFY `arw_id` tinyint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `drugtype`
+--
+ALTER TABLE `drugtype`
+  MODIFY `dt_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `police`
+--
+ALTER TABLE `police`
+  MODIFY `p_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `position`
+--
+ALTER TABLE `position`
+  MODIFY `po_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `punishment`
+--
+ALTER TABLE `punishment`
+  MODIFY `pu_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `station`
+--
+ALTER TABLE `station`
+  MODIFY `ps_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

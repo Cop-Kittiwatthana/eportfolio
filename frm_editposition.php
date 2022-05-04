@@ -1,5 +1,7 @@
 <?php
-	include "connect.php";
+session_start();
+if(isset($_SESSION["valid_uname"]) && isset($_SESSION["valid_pwd"]) && $_SESSION["u_stat"] == '0'){
+include "connect.php";
 	$po_id = $_GET['po_id'];
 	$sql = "SELECT * FROM position WHERE po_id = '$po_id'";
 	$result = mysql_query($sql,$conn)
@@ -11,40 +13,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
+<title>แก้ไขตำแหน่ง</title>
+<?php include "abc.php"; ?>
+  </head>
 
-<body>
-<table width="1219" height="237" border="1" cellpadding="0" cellspacing="0">
-  <?php
-  include "head.php";
-  include "admin_menu.php";
-  ?>
-  <tr>
-    <td><div align="center">
-      <form id="form1" name="form1" method="post" action="editposition.php">
-        <table width="645" border="1" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="2"><div align="center">แก้ไขกลุ่มสาระ</div></td>
-          </tr>
-          <tr>
-            <td width="140"><div align="center">ชื่อกลุ่มสาระ</div></td>
-            <td width="499"><input name="po_name" type="text" id="po_name" value="<?php echo "$rs[po_name]"; ?>" />
-              <input name="po_id" type="hidden" id="po_id" value="<?php echo "$rs[po_id]"; ?>" /></td>
-          </tr>
-          <tr>
-            <td colspan="2"><div align="center">
-              <input type="submit" name="button" id="button" value="บันทึก" />
-              <input type="button" onclick = "window.history.back()" name="button2" id="button2" value="ยกเลิก" />
-            </div></td>
-          </tr>
-        </table>
-      </form>
-    </div></td>
-  </tr>
-  <?php
-  include "foot.php"
-  ?>
-</table>
-</body>
-</html>
+  <body>
+    <?php
+      include "admin_menu.php";
+      ?>
+    <table width="800" height="400" border="0" align="center">
+      <tr>
+        <?php
+          include "head.php";
+          ?>
+        <td height="263">
+          <form id="form1" name="form1" method="post" action="editposition.php">
+            <br>
+            <div id="content-wrapper">
+              <div class="container h-100 ">
+                <div class="row h-100 justify-content-center align-items-center">
+                  <!-- DataTables Example -->
+                  <div class="card col-sb-8">
+                  <div class="card-header">
+                      <div><i class="far fa-edit"></i>
+                      แก้ไขตำแหน่ง
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <td width="138" align="center">ชื่อตำแหน่ง</td>
+                            <td width="656"><input class="form-control" onkeypress="isInputChar(event)" required="required" name="po_name" type="text" id="po_name" value="<?php echo "$rs[po_name]"; ?>" />
+                              <input name="po_id" type="hidden" id="po_id" value="<?php echo "$rs[po_id]"; ?>" /></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" align="center">
+                              <input class="btn btn-primary" type="submit" name="btnsave" id="btnsave" value="บันทึก" />
+                              <input class="btn btn-danger" type="reset" onclick="window.history.back()" name="btnCancel" id="btnCancel" value="ยกเลิก" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </form>
+    </table>
+    <p>&nbsp;</p>
+    </div>
+    </td>
+    </tr>
+    <?php
+      include "foot.php"
+      ?>
+    </table>
+  </body>
+
+  </html>
+<?php
+} else {
+  echo "<script> alert('Please Login');window.history.go(-1);</script>";
+  exit();
+}
+?>
